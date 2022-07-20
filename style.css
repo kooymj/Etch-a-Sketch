@@ -2,17 +2,23 @@ h1 {
     text-align: center;
 }
 
-.btn-clear {
-    position: absolute;
-    top: 70%;
-    left: 80%;
-    display: grid;
+.btn {
     width: 100px;
     height: 25px;
     background-color: rgb(162, 183, 240);
     color:aliceblue;
     font-weight: 900;
-    padding-top: 3px;
+    padding-top: 2px;
+}
+.btn-new {
+    position: absolute;
+    top: 70%;
+    left: 0%;
+}
+.btn-clear {
+    position: absolute;
+    top: 70%;
+    left: 80%;
 }
 
 .container-top { 
