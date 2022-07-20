@@ -47,7 +47,8 @@ const clearBtn = document.querySelector('.btn-clear');
 
 function clearGrid(){
     const cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => cell.classList.remove('draw'));
+    cells.forEach(cell => cell.classList.remove(cell.classList[1]));
+    cells.forEach(cell => cell.classList.add(COLORS[0]));
 }
 
 clearBtn.addEventListener('click', clearGrid);
