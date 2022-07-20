@@ -1,12 +1,29 @@
 const grid = document.getElementById('grid');
 
+//color change
 let mousedown = false;
 grid.onmousedown = () => (mousedown = true);
 grid.onmouseup = () => (mousedown = false);
 
+var currentColor = 'draw-black';
+const COLORS = ['draw-black', 'draw-purple', 'draw-violet', 'draw-blue', 'draw-green', 'draw-yellow', 'draw-orange', 'draw-red', 'draw-white'];
+
+function scratchColorOff(e){
+    var currentColorIndex = COLORS.indexOf(currentColor, 0);
+    e.target.classList.remove(COLORS[currentColorIndex]);
+    currentColorIndex++;
+    if(currentColorIndex > COLORS.length - 1){
+        currentColorIndex = COLORS.length - 1;
+    }
+    currentColor = COLORS[currentColorIndex];
+    console.log(currentColor);
+    return currentColor;
+}
+
 function changeColor(e){
     if(e.type === 'mouseover' && !mousedown) return;
-    e.target.classList.add('draw');
+    currentColor = e.target.classList[1];
+    e.target.classList.add(scratchColorOff(e));
 }
 
 function makeGrid(size){
@@ -15,7 +32,7 @@ function makeGrid(size){
 
     for(let i = 0; i < size * size; i++){
         const cell = document.createElement('div');
-        cell.classList.add('cell');
+        cell.classList.add('cell', 'draw-black');
         cell.addEventListener('mouseover', changeColor);
         cell.addEventListener('mousedown', changeColor);
         grid.appendChild(cell);
